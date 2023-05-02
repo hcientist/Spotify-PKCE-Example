@@ -34,7 +34,6 @@
     button.addEventListener('click', async ()=>{
       console.log('get token')
 
-      const digest = await window.crypto.subtle.digest('SHA-256', data);
 
       async function generateCodeChallenge(codeVerifier) {
         function base64encode(string) {
