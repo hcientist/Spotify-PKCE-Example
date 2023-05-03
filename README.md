@@ -2,6 +2,8 @@
 
 "Quick" (? 😅) attempt at demonstrating the code to do Spotify's "new" PKCE authentication flow. Permitting apps with no backend to make requests to the Spotify API.
 
+Find the source code at https://github.com/hcientist/Spotify-PKCE-Example and a demo at https://hcientist.github.io/Spotify-PKCE-Example
+
 ## Highest level summary of the flow
 
 1. You have to register as a developer with spotify and then add an app. This will give you a `client id` and a `client secret`. You'll need the `client id` for this code/demo.
