@@ -88,7 +88,7 @@
 
 
     // do we already have the access token? auth code?
-    const token = localStorage.getItem('access_token')
+    let token = localStorage.getItem('access_token')
     if (token) {
       if (code) {
         // if it does have the code, paste it into the corresponding output elem
@@ -141,8 +141,9 @@
       console.log('gettoken', clientId , redirectUri , code)
       if (clientId && redirectUri && code) {
         getToken(clientId, redirectUri, code)
-          .then(token => {
-            tokenOutputElem.value = token
+          .then(t => {
+            token = t
+            tokenOutputElem.value = t
           })
       }
     })
