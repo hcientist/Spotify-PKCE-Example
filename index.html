@@ -131,12 +131,14 @@
 
     // if click getToken
     getTokenBtn.addEventListener('click', () => {
+      console.log('clicccccked')
       if (clientIDElem.value) {
         clientId = clientIDElem.value;
       }
       if (redirectURIElem.value) {
         redirectUri = redirectURIElem.value;
       }
+      console.log('gettoken', clientId , redirectUri , code)
       if (clientId && redirectUri && code) {
         getToken(clientId, redirectUri, code)
           .then(token => {
