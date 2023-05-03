@@ -208,7 +208,7 @@
           localStorage.setItem('code_verifier', codeVerifier);
 
           let state = generateRandomString(16);
-          let scope = 'user-read-private user-read-email';
+          let scope = 'user-read-private user-read-email user-modify-playback-state';
 
 
           let args = new URLSearchParams({
