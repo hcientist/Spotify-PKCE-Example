@@ -227,6 +227,9 @@
 
     // get the access token that we need to make requests to the spotify api endpoints
     function getToken(clientId, redirectUri, code) {
+      if (!(clientId && redirectUri && code)) {
+        console.error('requires', clientId, redirectUri, code)
+      }
       let codeVerifier = localStorage.getItem('code_verifier');
 
       let body = new URLSearchParams({
@@ -292,7 +295,7 @@
         headers: {
           Authorization: 'Bearer ' + accessToken
         },
-        body: { "uris": uris }
+        body: JSON.stringify({ "uris": uris })
       }).then(r => r.json()).then(data => {
         console.log(data)
         return data;
