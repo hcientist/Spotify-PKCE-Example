@@ -151,7 +151,7 @@
     getProfileBtn.addEventListener('click', () => {
       if (token) {
         getProfile(token)
-          .then(profile => apiOutputElem.value = profile + "\n" + apiOutputElem.value)
+          .then(profile => apiOutputElem.value = profile + "\n" + JSON.stringify(apiOutputElem.value))
       } else {
         console.error("don't have token")
       }
@@ -160,14 +160,14 @@
     searchBtn.addEventListener('click', () => {
       if (token && queryInputElem.value) {
         searchSpotify(token, queryInputElem.value)
-          .then(results=> apiOutputElem.value = results + "\n" + apiOutputElem.value)
+          .then(results=> apiOutputElem.value = results + "\n" + JSON.stringify(apiOutputElem.value))
       }
     })
 
     playBtn.addEventListener('click', () => {
       if (token && urisInputElem.value) {
         playItem(token, urisInputElem.value)
-          .then(results => apiOutputElem.value = results + "\n" + apiOutputElem.value)
+          .then(results => apiOutputElem.value = results + "\n" + JSON.stringify(apiOutputElem.value))
       }
     })
 
@@ -293,9 +293,10 @@
       return fetch(`https://api.spotify.com/v1/me/player/play`, {
         method: 'PUT',
         headers: {
-          Authorization: 'Bearer ' + accessToken
+          Authorization: 'Bearer ' + accessToken,
+          'Content-Type': 'application/json' 
         },
-        body: JSON.stringify({ "uris": uris })
+        body: { uris }
       }).then(r => r.json()).then(data => {
         console.log(data)
         return data;
