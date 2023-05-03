@@ -290,13 +290,16 @@
 
     // function to search for spotify results
     function playItem(accessToken, uris = ["spotify:track:39rHfrVqCX6A55GF7uOZSC"]) {
+      const body = {
+        uris: uris
+      }
       return fetch(`https://api.spotify.com/v1/me/player/play`, {
         method: 'PUT',
         headers: {
           Authorization: 'Bearer ' + accessToken,
           'Content-Type': 'application/json' 
         },
-        body: { uris }
+        body: JSON.stringify(body)
       }).then(r => r.json()).then(data => {
         console.log(data)
         return data;
